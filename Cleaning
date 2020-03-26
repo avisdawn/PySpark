@@ -1,0 +1,47 @@
+file_path = "/data/weather/2019"
+inTextData  = spark.read.format("csv").option("header", "true").option("delimiter","\t").load(file_path)
+
+
+name_list = inTextData .schema.names
+
+name_list = str(name_list).strip("['']").split(' ')
+names = []
+for item in name_list:
+    if len(item)>0:names.append(item)
+
+
+rdd1=inTextData .rdd
+
+
+rdd2 = rdd1.map(lambda x: str(x).split('=')[1])
+
+rdd3 = rdd2.map(lambda x: ' '.join(x.split()))
+
+rdd4 = rdd3.map(lambda x: x[1:-2])
+rdd4.saveAsTextFile("Spark2019"+'temp')
+
+newInData = spark.read.csv("Spark2019"+'temp',header=False,sep=' ')
+
+cleanData2019 = newInData.drop('_c1','_c4','_c6','_c8','_c10','_c12','_c14')
+
+cleanData2019 = cleanData2019.withColumnRenamed('_c0','STN').withColumnRenamed('_c2','YEARMODA')\
+                    .withColumnRenamed('_c3','TEMP').withColumnRenamed('_c5','DEWP')\
+                    .withColumnRenamed('_c7','SLP').withColumnRenamed('_c9','STP')\
+                    .withColumnRenamed('_c11','VISIB').withColumnRenamed('_c13','WDSP')\
+                    .withColumnRenamed('_c15','MXSPD').withColumnRenamed('_c16','GUST')\
+                    .withColumnRenamed('_c17','MAX').withColumnRenamed('_c18','MIN')\
+                    .withColumnRenamed('_c19','PRCP').withColumnRenamed('_c20','SNDP')\
+                    .withColumnRenamed('_c21','FRSHTT')
+
+cleanData2019.registerTempTable('Data2019')
+cleanData2019.show(3)
+
+val sqlContext = new HiveContext(sc)
+val df = sqlContext.sql("SELECT TEMP from Data2019 WHERE TEMP=(SELECT MIN(TEMP) FROM Data2019)")
+df.write.text("/path/to/file")
+
+spark.sql("""Select TEMP from (Select TEMP from Data2019 WHERE TEMP=(SELECT MIN(TEMP) FROM Data2019) ) UNION Select TEMP from Data2019 WHERE TEMP=(SELECT MIN(TEMP) FROM Data2019)""")
+
+
+
+cleanData=cleanData.withColumn("MAX", cleanData.MAX.cast("float"))
