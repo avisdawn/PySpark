@@ -1,0 +1,261 @@
+
+Task 1
+
+2010
+HOTTEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2010 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2010 where MAX != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MAX|
++-------+--------+------+
+|'720667|20100923|132.8*|
++-------+--------+------+
+
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2010 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2010 where MIN != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20100802|-115.2|
++-------+--------+------+
+
+2011
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2011 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2011 where MIN != '9999.9')").show()
++-------+--------+-------+
+|    STN|    DATE|    MIN|
++-------+--------+-------+
+|'897340|20110917|-111.8*|
+		
+
+
+HOTTEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2011 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2011 where MAX != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MAX|
++-------+--------+------+
+|'720293|20110613|131.0*|
++-------+--------+------+
+2012
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2012 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2012 where MIN != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20120916|-119.6|
++-------+--------+------+
+
+HOTTEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2012 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2012 where MAX != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MAX|
++-------+--------+------+
+|'722577|20120712|132.8*|
++-------+--------+------+
+2013
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2013 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2013 where MIN != '9999.9')").show()
++-------+--------+-------+
+|    STN|    DATE|    MIN|
++-------+--------+-------+
+|'895770|20130730|-115.1*|
+|'895770|20130731|-115.1*|
++-------+--------+-------+
+
+HOTTEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2013 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2013 where MAX != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MAX|
++-------+--------+------+
+|'406890|20130712|132.8*|
++-------+--------+------+
+
+2014
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2014 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2014 where MIN != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20140821|-113.4|
++-------+--------+------+
+
+HOTTEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2014 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2014 where MAX != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MAX|
++-------+--------+------+
+|'406650|20140803|129.6*|
++-------+--------+------+
+
+2015
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2015 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2015 where MIN != '9999.9')").show()
+
++-------+--------+-------+
+|    STN|    DATE|    MIN|
++-------+--------+-------+
+|'895770|20150917|-114.2*|
+|'896060|20150822| -114.2|
++-------+--------+-------+
+
+
+HOTTEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2015 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2015 where MAX != '9999.9')").show()
++-------+--------+-----+
+|    STN|    DATE|  MAX|
++-------+--------+-----+
+|'916700|20151021|132.4|
++-------+--------+-----+
+2016
+COLDEST
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2016 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2016 where MIN != '9999.9')").show()
+
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20160712|-115.1|
++-------+--------+------+
+
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2016 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2016 where MAX != '9999.9')").show()
++-------+--------+-----+
+|    STN|    DATE|  MAX|
++-------+--------+-----+
+|'700638|20160622|129.0|
++-------+--------+-----+
+
+2017
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2017 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2017 where MIN != '9999.9')").show()
++-------+--------+-------+
+|    STN|    DATE|    MIN|
++-------+--------+-------+
+|'896250|20170620|-116.0*|
++-------+--------+-------+
+
+>>>
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2017 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2017 where MAX != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MAX|
++-------+--------+------+
+|'917430|20170410|129.6*|
++-------+--------+------+
+
+2018
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2018 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2018 where MIN != '9999.9')").show()
+[Stage 421:>                                                       (0 + 2) / 16]
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20180828|-116.3|
++-------+--------+------+
+
+>>>
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2018 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2018 where MAX != '9999.9')").show()
++-------+--------+-----+
+|    STN|    DATE|  MAX|
++-------+--------+-----+
+|'408110|20180702|126.3|
++-------+--------+-----+
+
+2019
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from Data2019 where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from Data2019 where MIN != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20190405|-102.1|
++-------+--------+------+
+
+>>> spark.sql("select STN, YEARMODA AS DATE, MAX from Data2019 where cast(replace(MAX,'*','') as double) in (select MAX(cast(replace(MAX,'*','') as double)) from Data2019 where MAX != '9999.9')").show()
++-------+--------+-----+
+|    STN|    DATE|  MAX|
++-------+--------+-----+
+|'956660|20190124|121.1|
++-------+--------+-----+
+
+Task 2:
+OVERALL COLDEST DAY
+>>> spark.sql("select STN, YEARMODA AS DATE, MIN from DataAll where cast(replace(MIN,'*','') as double) in (select MIN(cast(replace(MIN,'*','') as double)) from DataAll where MIN != '9999.9')").show()
++-------+--------+------+
+|    STN|    DATE|   MIN|
++-------+--------+------+
+|'896060|20120916|-119.6|
++-------+--------+------+
+
+OVERALL HOTTEST DAY
+>>> spark.sql("Select STN, MAX, YEARMODA as DATE from DataAll where cast(replace(MAX,'*','') as double) in (Select MAX(cast(replace(MAX,'*','')as double)) from DataAll where MAX!='9999.9')").show()
++-------+------+--------+
+|    STN|   MAX|    DATE|
++-------+------+--------+
+|'720667|132.8*|20100923|
+|'722577|132.8*|20120712|
+|'406890|132.8*|20130712|
++-------+------+--------+
+
+>>> spark.sql("Select STN, MAX, YEARMODA as DATE from DataAll where cast(replace(MAX,'*','') as double) in (Select MAX(cast(replace(MAX,'*','')as double)) from DataAll where MAX!='9999.9')").show()
++-------+------+--------+
+|    STN|   MAX|    DATE|
++-------+------+--------+
+|'720667|132.8*|20100923|
+|'722577|132.8*|20120712|
+|'406890|132.8*|20130712|
++-------+------+--------+
+
+TASK 3
+>>> spark.sql("Select STN,YEARMODA as year,LEFT(PRCP,4) from Data2015 where cast(LEFT(PRCP,4) as double) in (select MAX(cast(LEFT(PRCP,4) as double)) from Data2015 where PRCP!='99.99')").show()
++-------+--------+------------------------+
+|    STN|    year|left(data2015.`PRCP`, 4)|
++-------+--------+------------------------+
+|'915410|20150311|                    19.4|
++-------+--------+------------------------+
+
+>>> spark.sql("Select STN,YEARMODA as year,LEFT(PRCP,4) from Data2015 where cast(LEFT(PRCP,4) as double) in (select MIN(cast(LEFT(PRCP,4) as double)) from Data2015 where PRCP!='99.99')").show()
++-------+--------+------------------------+
+|    STN|    year|left(data2015.`PRCP`, 4)|
++-------+--------+------------------------+
+|'999999|20150101|                    0.00|
+|'999999|20150102|                    0.00|
+|'999999|20150103|                    0.00|
+|'999999|20150104|                    0.00|
+|'999999|20150105|                    0.00|
+|'999999|20150106|                    0.00|
+|'999999|20150107|                    0.00|
+|'999999|20150108|                    0.00|
+|'999999|20150109|                    0.00|
+|'999999|20150110|                    0.00|
+|'999999|20150111|                    0.00|
+|'999999|20150112|                    0.00|
+|'999999|20150113|                    0.00|
+|'999999|20150114|                    0.00|
+|'999999|20150115|                    0.00|
+|'999999|20150116|                    0.00|
+|'999999|20150117|                    0.00|
+|'999999|20150118|                    0.00|
+|'999999|20150119|                    0.00|
+|'999999|20150120|                    0.00|
++-------+--------+------------------------+
+only showing top 20 rows
+
+
+Task 4
+>>> spark.sql('SELECT (COUNT(STP)*100/(Select Count(*) from Data2019)) as percent FROM Data2019 WHERE STP="9999.9"').show()
++------------------+
+|           percent|
++------------------+
+|27.961149260961918|
++------------------+
+Task 5
+Filtering Data
+cleanData2019=cleanData2019.filter(cleanData2019.GUST!=999.9)
+Converting GUST to Float
+cleanData2019=cleanData2019.withColumn("GUST", cleanData2019.GUST.cast("float"))
+Creating a temp view
+cleanData2019.registerTempTable('Data2019')
+Find the date and STN Code
+spark.sql("SELECT STN, GUST,YEARMODA from Data2019 WHERE GUST=(SELECT MAX(GUST) FROM Data2019)").show()
++-------+-----+--------+
+|    STN| GUST|YEARMODA|
++-------+-----+--------+
+|'085510|116.6|20190101|
+|'085510|116.6|20190106|
++-------+-----+--------+
+
+
+
